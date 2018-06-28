@@ -19,19 +19,19 @@
             <div class="register-con-row">
               <div class="ming">
                 <input type="text" placeholder="名" v-model="secName">
-                <i v-if="isMing == true" class="iconfont icon-chuyidong"></i>
+                <i v-if="isMing == true" class="iconfont icon-guanbi"></i>
                 <i v-if="isMing == false" class="iconfont icon-htmal5icon22"></i>
                 <span v-if="isMing">必须填写</span>
               </div>
               <div class="xing">
                 <input type="text" placeholder="姓" v-model="firName">
-                <i v-if="isXing == true" class="iconfont icon-chuyidong"></i>
+                <i v-if="isXing == true" class="iconfont icon-guanbi"></i>
                 <i v-if="isXing == false" class="iconfont icon-htmal5icon22"></i>
                 <span v-if="isXing">必须填写</span>
               </div>
               <div class="e-mail">
                 <input type="text" placeholder="电子邮件" v-model="username">
-                <i v-if="isEmail == true" class="iconfont icon-chuyidong"></i>
+                <i v-if="isEmail == true" class="iconfont icon-guanbi"></i>
                 <i v-if="isEmail == false" class="iconfont icon-htmal5icon22"></i>
                 <span v-if="isEmail">必须填写</span>
               </div>
@@ -51,13 +51,13 @@
               <div v-if="isCard" class="firm-con">
                 <div class="card">
                   <input type="text" placeholder="身份证" v-model="idCard">
-                  <i v-if="isCardc == true" class="iconfont icon-chuyidong"></i>
+                  <i v-if="isCardc == true" class="iconfont icon-guanbi"></i>
                   <i v-if="isCardc == false" class="iconfont icon-htmal5icon22"></i>
                   <span v-if="isCardc">必须填写</span>
                 </div>
                 <div class="firm-name">
                   <input type="text" placeholder="企业名称" v-model="comName">
-                  <i v-if="isfirmName == true" class="iconfont icon-chuyidong"></i>
+                  <i v-if="isfirmName == true" class="iconfont icon-guanbi"></i>
                   <i v-if="isfirmName == false" class="iconfont icon-htmal5icon22"></i>
                   <span v-if="isfirmName">必须填写</span>
                 </div>
