@@ -41,11 +41,11 @@ active:item.show,isClick:item.show}">
               </li>
             </ul>
           </li>
-          <li>
+          <li @click="goHelp">
             <span>帮助</span>
             <i class="iconfont icon-yiwen"></i>
           </li>
-          <li>
+          <li @click="goStore">
             <span>实体门店</span>
             <i class="iconfont icon-dibiaotianchong"></i>
           </li>
@@ -184,6 +184,16 @@ active:item.show,isClick:item.show}">
       goCart () {
         this.$router.push({
           name: 'ShoppingCart'
+        })
+      },
+      goHelp () {
+        this.$router.push({
+          name: 'Help'
+        })
+      },
+      goStore () {
+        this.$router.push({
+          name: "EntityStore"
         })
       },
       getCount() {

@@ -15,6 +15,8 @@ import Download from "../components/UserCenter/Download"
 import MyPwd from "../components/UserCenter/MyPwd"
 import GoodDetail from "../components/Goods/GoodDetail";
 import AddGoods from "../view/addGoods";
+import Help from "../view/help"
+import EntityStore from "../view/entityStore"
 
 Vue.use(Router)
 
@@ -92,6 +94,16 @@ export default new Router({
       path: "/myPwd",
       name: "MyPwd",
       component: MyPwd,
+    },
+    {
+      path: '/help',
+      name: 'Help',
+      component: Help,
+    },
+    {
+      path: '/entityStore',
+      name: 'EntityStore',
+      component:EntityStore
     },
     {
       path: '/addGoods',
