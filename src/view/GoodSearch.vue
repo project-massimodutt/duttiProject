@@ -14,7 +14,8 @@
         </div>
       </div>
       <search v-show="goodList.length!=0" :initgood="initgoodList" @changeGood="CGood"></search>
-      <good-list class="good-list" :goods="goodList"></good-list>
+      <good-list v-show="ShowGoodList" class="good-list" :goods="goodList"></good-list>
+    <div v-show="!ShowGoodList" class="good-list-mess"><span>未搜索到该商品,试试搜索其他商品吧!</span></div>
     </div>
 </template>
 
@@ -28,7 +29,8 @@
       return {
         val:"",
         goodList:[],
-        initgoodList:[]
+        initgoodList:[],
+        ShowGoodList:true,
       }
     },
     components:{
@@ -42,8 +44,14 @@
           .then(({data}) => {
             console.log(data);
             if (data.status==1) {
-              this.goodList = data.data;
-              this.initgoodList = data.data;
+              if(data.data.length == 0) {
+                this.ShowGoodList = false;
+              } else {
+                this.goodList = data.data;
+                this.initgoodList = data.data;
+                this.ShowGoodList = true;
+              }
+              
             }
           });
       },
@@ -136,5 +144,13 @@
   }
   .good-list {
     margin-top:283px;
+  }
+  .good-list-mess {
+    margin-top: 283px;
+    width: 100%;
+    height: 590px;
+    text-align: center;
+    line-height: 590px;
+    color: red;
   }
 </style>

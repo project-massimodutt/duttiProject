@@ -16,8 +16,8 @@
       <div class="product-list-wrap" ref="goodWrap">
         
         <!--商品列表-->
-        <good-list ref="goodList" :goods="good"></good-list>
-        
+        <good-list v-show="showGoodSList" ref="goodList" :goods="good"></good-list>
+        <div class="good-list-mess" v-show="!showGoodSList"><span>暂无此类商品哦!</span></div>
         <!--分类-->
         <div class="classify-nav">
           <div class="nav-prev nav" @click="getTagPrev" v-show="tagIndex>0">
@@ -88,6 +88,7 @@
         showFilter: false,
         //滚动距离
         scrollTop: 0,
+        showGoodSList:true,
       }
     },
     
@@ -150,7 +151,12 @@
           .then(({data}) => {
             if (data.status == 1) {
               console.log(data);
-              this.good = data.data;
+              if(data.data.length == 0) {
+                this.showGoodSList = false;
+              } else {
+                this.good = data.data;
+                this.showGoodSList = true;
+              }
             } else {
               alert(data.msg);
             }
@@ -215,6 +221,15 @@
     .product-list-wrap {
       width: 100%;
       padding-top: 80px;
+      .good-list-mess{
+        width: 100%;
+        height: 590px;
+        text-align: center;
+        line-height: 590px;
+        color: red;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
       /*分类按钮*/
       .classify-nav {
         margin-right: -20px;
