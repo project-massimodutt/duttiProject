@@ -160,22 +160,13 @@ active:item.show,isClick:item.show}">
           }
         })
         console.log(this.tags);
-        this.$store.commit('getTag',this.tags);
+        localStorage.setItem('tagList', JSON.stringify(this.tags));
 
         this.tagArr[1] = item2;
-        console.log(this.tagArr);
-        this.$axios.get("/api/goods/tag",{params:{tag:this.tagArr}})
-          .then(({data}) => {
-            console.log(data);
-            if(data.data.length == 0) {
-              return;
-            } else {
-              this.$store.commit('getGoodList',data.data);
-              this.$router.push({
-                name: 'Good'
-              })
-            }
-          })
+        localStorage.setItem('tag', JSON.stringify(this.tagArr));
+        this.$router.push({
+          name: 'Good'
+        })
       },
       searchDetail() {
         this.$router.push({

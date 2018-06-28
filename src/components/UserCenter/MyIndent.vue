@@ -4,30 +4,32 @@
     <div class="myIndent">
       <!--订单-->
       <div v-if="isCon" class="myIndent-con-box1" ref="indentCon">
-        <ul class="myIndent-con" >
+        <div class="myIndent-con" >
           <div class="myIndent-head">
             <i @click="back"  class="iconfont icon-fanhui"></i>
             <div>
               <p>我的订单</p>
             </div>
           </div>
-          <li v-for="item in indexData">
-            <div @click="show(item)" class="indent">
-              <div class="indent-left">
-                <img :src="item.goods[0].showPic" alt="">
+          <ul>
+            <li v-for="item in indexData">
+              <div @click="show(item)" class="indent">
+                <div class="indent-left">
+                  <img :src="item.goods[0].showPic" alt="">
+                </div>
+                <div class="indent-right">
+                  <p>{{item.orderNum}}</p>
+                  <p>21 / 06 / 2018</p>
+                  <p>¥ {{money(item)}}</p>
+                  <p>1 产品</p>
+                </div>
+                <div class="indent-bottom">
+                  <p>pq {{item.status}}</p>
+                </div>
               </div>
-              <div class="indent-right">
-                <p>{{item.orderNum}}</p>
-                <p>21 / 06 / 2018</p>
-                <p>¥ {{money(item)}}</p>
-                <p>1 产品</p>
-              </div>
-              <div class="indent-bottom">
-                <p>pq {{item.status}}</p>
-              </div>
-            </div>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </div>
       <!--订单明细-->
       <div v-if="isConver"  class="myIndent-cover-box" ref="cover">
@@ -185,7 +187,11 @@
     },
     mounted() {
       let indentConWrapper = this.$refs.indentCon;
-      this.indentConWrapper = new BScroll(indentConWrapper, {
+      let coverConWrapper = this.$refs.cover;
+      this.indentWrapper = new BScroll(indentConWrapper, {
+        click: true,
+      });
+      this.coverWrapper = new BScroll(coverConWrapper, {
         click: true,
       })
     },
@@ -227,6 +233,7 @@
       }
     },
     created(){
+      console.log(localStorage.getItem("userid"));
       this.$axios.get(`${this.$api}/user/order?userid=${localStorage.getItem("userid")}`).then(({data})=>{
         if (data.status==1){
           this.indexData = data.data;
@@ -318,10 +325,10 @@
       position: fixed;
       top: 104px;
       left: 0;
+      bottom: 180px;
       width: 100%;
-      height: calc(100% - 180px);
       background: white;
-      overflow: scroll;
+      overflow: hidden;
       .myIndent-cover {
         width: 100%;
         .myIndent-cover-mid-box {

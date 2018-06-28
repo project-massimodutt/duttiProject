@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="cart-con">
-        <div v-if="isContext1" class="cart-ul">
+        <div v-if="cartData.length>0" class="cart-ul">
           <ul>
             <li v-for="(item,index) in cartData">
               <div class="cart-ul-li">
@@ -39,7 +39,7 @@
                         <p>数量 <span>{{item.count}}</span></p>
                       </div>
                       <div class="right-bottom-right">
-                        <p>¥ {{item.oldPrice}}<i></i></p>
+                        <p>¥ {{item.oldPrice}}</p>
                         <span>¥ 590</span>
                       </div>
                     </div>
@@ -74,14 +74,14 @@
             </div>
           </div>
         </div>
-        <div v-if="isContext1" class="cart-bottom">
+        <div v-if="cartData.length>0" class="cart-bottom">
           <div class="cart-bottom-head">
             <span>总计（包括增值税）</span>
             <span>¥ {{money+10}}</span>
           </div>
           <button @click="ha">继续</button>
         </div>
-        <div v-if="isContext" class="cart-con-text">
+        <div v-if="cartData.length<=0" class="cart-con-text">
           <h2>购物车为空!</h2>
         </div>
       </div>
@@ -110,8 +110,6 @@
         isEdi: false,
         cartData: [],
         isYes: false,
-        isContext: false,
-        isContext1: true,
       }
     },
     methods: {
@@ -229,18 +227,12 @@
     created() {
       if (!localStorage.getItem('userid')) {
         this.$router.go(-1);
+        alert("请先登录");
       } else {
-        this.$axios.get(`${this.$api}/user/cart`).then(({data}) => {
+        this.$axios.get(`${this.$api}/user/cart?userid=${localStorage.getItem('userid')}`).then(({data}) => {
           console.log(data);
           this.cartData = data.data;
           console.log(this.cartData)
-          if (this.cartData.length <= 0) {
-            this.isContext = true;
-            this.isContext1 = false;
-          } else {
-            this.isContext = false;
-            this.isContext1 = true;
-          }
         }).catch((err) => {
           console.error(err)
         })
@@ -368,13 +360,7 @@
                       position: relative;
                       top: 0;
                       left: 0;
-                      i {
-                        display: block;
-                        width: 100%;
-                        border-bottom: 2px solid black;
-                        position: absolute;
-                        top: 17px;
-                      }
+                      text-decoration: line-through;
                     }
                     span {
                       color: red;

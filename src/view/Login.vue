@@ -72,6 +72,8 @@
           }).then(({data}) => {
             console.log(data);
             if (data.status == 1) {
+              localStorage.removeItem("userid");
+              localStorage.removeItem("username");
               localStorage.setItem("userid", data.data.userid);
               localStorage.setItem("username", data.data.username);
               this.$router.push("/index");
