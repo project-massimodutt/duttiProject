@@ -29,14 +29,14 @@
       <div v-if="isShow1" class="myAddress-row">
         <div class="row-xing">
           <input type="text" placeholder="姓氏" v-model="firName">
-          <i v-if="isfirName == true" class="iconfont icon-chuyidong"></i>
-          <i v-if="isfirName == false" class="iconfont icon-htmal5icon22"></i>
+          <i v-if="isfirName" class="iconfont "></i>
+          <i v-if="!isfirName" class="iconfont icon-htmal5icon22"></i>
           <p v-if="isfirName">必须填写</p>
         </div>
         <div class="row-ming">
           <input type="text" placeholder="名" v-model="secName">
-          <i v-if="isSecName == true" class="iconfont icon-chuyidong"></i>
-          <i v-if="isSecName == false" class="iconfont icon-htmal5icon22"></i>
+          <i v-if="isSecName" class="iconfont icon-guanbi"></i>
+          <i v-if="!isSecName" class="iconfont icon-htmal5icon22"></i>
           <p v-if="isSecName">必须填写</p>
         </div>
         <div class="row-mid">
@@ -50,29 +50,29 @@
           <div class="row-phone">
             <span>+86</span>
             <input type="text" placeholder="手机号码" v-model="phone">
-            <i v-if="isPhone == true" class="iconfont icon-chuyidong"></i>
-            <i v-if="isPhone" class="iconfont icon-htmal5icon22"></i>
+            <i v-if="isPhone" class="iconfont icon-guanbi"></i>
+            <i v-if="!isPhone" class="iconfont icon-htmal5icon22"></i>
           </div>
           <div class="row-mid-txt">
-            <span v-if="isPhone == false">必须填写</span>
+            <span v-if="isPhone">必须填写</span>
           </div>
         </div>
         <div class="row-site">
           <input type="text" placeholder="地址" v-model="address">
-          <i v-if="isAddress == true" class="iconfont icon-chuyidong"></i>
-          <i v-if="isAddress" class="iconfont icon-htmal5icon22"></i>
+          <i v-if="isAddress" class="iconfont icon-guanbi"></i>
+          <i v-if="!isAddress" class="iconfont icon-htmal5icon22"></i>
           <p v-if="isAddress">必须填写</p>
         </div>
         <div class="row-else">
           <input type="text" placeholder="其他信息" v-model="other">
-          <i v-if="isOther == true" class="iconfont icon-chuyidong"></i>
-          <i v-if="isOther" class="iconfont icon-htmal5icon22"></i>
+          <i v-if="isOther" class="iconfont icon-guanbi"></i>
+          <i v-if="!isOther" class="iconfont icon-htmal5icon22"></i>
           <p v-if="isOther">必须填写</p>
         </div>
         <div class="row-min-bot">
           <div class="row-postcode">
             <input type="text" placeholder="邮政 编码" v-model="postCode">
-            <i v-if="isPostCode == true" class="iconfont icon-chuyidong"></i>
+            <i v-if="isPostCode == true" class="iconfont icon-guanbi"></i>
             <i v-if="postCode" class="iconfont icon-htmal5icon22"></i>
           </div>
         </div>
@@ -89,14 +89,14 @@
       <div v-if="isUpdata" class="myAddress-row">
         <div class="row-xing">
           <input type="text" placeholder="姓氏" v-model="firName">
-          <i v-if="isfirName == true" class="iconfont icon-chuyidong"></i>
-          <i v-if="isfirName == false" class="iconfont icon-htmal5icon22"></i>
+          <i v-if="isfirName" class="iconfont icon-guanbi"></i>
+          <i v-if="!isfirName" class="iconfont icon-htmal5icon22"></i>
           <p v-if="isfirName">必须填写</p>
         </div>
         <div class="row-ming">
           <input type="text" placeholder="名" v-model="secName">
-          <i v-if="isSecName == true" class="iconfont icon-chuyidong"></i>
-          <i v-if="isSecName == false" class="iconfont icon-htmal5icon22"></i>
+          <i v-if="isSecName" class="iconfont icon-guanbi"></i>
+          <i v-if="!isSecName" class="iconfont icon-htmal5icon22"></i>
           <p v-if="isSecName">必须填写</p>
         </div>
         <div class="row-mid">
@@ -110,30 +110,30 @@
           <div class="row-phone">
             <span>+86</span>
             <input type="text" placeholder="手机号码" v-model="phone">
-            <i v-if="isPhone == true" class="iconfont icon-chuyidong"></i>
-            <i v-if="isPhone" class="iconfont icon-htmal5icon22"></i>
+            <i v-if="isPhone" class="iconfont icon-guanbi"></i>
+            <i v-if="!isPhone" class="iconfont icon-htmal5icon22"></i>
           </div>
           <div class="row-mid-txt">
-            <span v-if="isPhone == false">必须填写</span>
+            <span v-if="isPhone">必须填写</span>
           </div>
         </div>
         <div class="row-site">
           <input type="text" placeholder="地址" v-model="address">
-          <i v-if="isAddress == true" class="iconfont icon-chuyidong"></i>
-          <i v-if="isAddress" class="iconfont icon-htmal5icon22"></i>
+          <i v-if="isAddress" class="iconfont icon-guanbi"></i>
+          <i v-if="!isAddress" class="iconfont icon-htmal5icon22"></i>
           <p v-if="isAddress">必须填写</p>
         </div>
         <div class="row-else">
           <input type="text" placeholder="其他信息" v-model="other">
-          <i v-if="isOther == true" class="iconfont icon-chuyidong"></i>
-          <i v-if="isOther" class="iconfont icon-htmal5icon22"></i>
+          <i v-if="isOther" class="iconfont icon-guanbi"></i>
+          <i v-if="!isOther" class="iconfont icon-htmal5icon22"></i>
           <p v-if="isOther">必须填写</p>
         </div>
         <div class="row-min-bot">
           <div class="row-postcode">
             <input type="text" placeholder="邮政 编码" v-model="postCode">
-            <i v-if="isPostCode == true" class="iconfont icon-chuyidong"></i>
-            <i v-if="postCode" class="iconfont icon-htmal5icon22"></i>
+            <i v-if="isPostCode" class="iconfont icon-guanbi"></i>
+            <i v-if="!postCode" class="iconfont icon-htmal5icon22"></i>
           </div>
         </div>
         <myarea @select="haha" pindex="1"></myarea>
@@ -651,8 +651,6 @@
     }
     height: 40px;
     .col:nth-child(1) {
-      top: 888px;
-      right: 60px;
       border-bottom: 1px solid black;
       select {
         margin: 0;
@@ -665,6 +663,9 @@
         font-style: italic;
         color: #555555;
         font-weight: 700;
+        option {
+          font-size: 26px;
+        }
       }
     }
     .col:nth-child(2) {
@@ -682,6 +683,9 @@
         font-style: italic;
         color: #555555;
         font-weight: 700;
+        option {
+          font-size: 26px;
+        }
       }
     }
     .col:nth-child(3) {
@@ -700,6 +704,9 @@
         font-style: italic;
         color: #555555;
         font-weight: 700;
+        option {
+          font-size: 26px;
+        }
       }
     }
   }

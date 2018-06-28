@@ -266,7 +266,7 @@
     h2 {
       display: inline-block;
       vertical-align: middle;
-      width: 90%;
+      width: 80%;
       height: 100%;
       font-size: 28px;
       font-weight: normal;

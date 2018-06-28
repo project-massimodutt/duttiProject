@@ -1,67 +1,67 @@
 <template>
-    <div class="container" >
-      <my-head></my-head>
-      <!--商品列表-->
-      <section class="category-page">
-
-        <!--筛选器区域-->
-        <div class="filtrate-wrap">
-          <!--筛选器-->
-          <div class="filtrate">
-            <a href="javascript:void(0);" @click="Filtrate"><span>筛选器</span></a>
+  <div class="container">
+    <my-head></my-head>
+    <!--商品列表-->
+    <section class="category-page">
+      
+      <!--筛选器区域-->
+      <div class="filtrate-wrap">
+        <!--筛选器-->
+        <div class="filtrate">
+          <a href="javascript:void(0);" @click="Filtrate"><span>筛选器</span></a>
+        </div>
+      </div>
+      
+      <!--商品列表区域-->
+      <div class="product-list-wrap" ref="goodWrap">
+        
+        <!--商品列表-->
+        <good-list ref="goodList" :goods="good"></good-list>
+        
+        <!--分类-->
+        <div class="classify-nav">
+          <div class="nav-prev nav" @click="getTagPrev" v-show="tagIndex>0">
+            <a href="javascript:void(0);">
+              <div class="prev">
+                <i class="iconfont icon-fanhui"></i>
+              </div>
+              <div class="mess">
+                <p class="title">{{tags.tag1}}</p>
+                <p class="name">{{tags.tag2[tagIndex-1]}}</p>
+              </div>
+            </a>
+          </div>
+          <div class="nav-next nav" @click="getTagNext" v-show="tagIndex<tags.tag2.length-1">
+            <a href="javascript:void(0);">
+              <div class="mess">
+                <p class="title">{{tags.tag1}}</p>
+                <p class="name">{{tags.tag2[tagIndex+1]}}</p>
+              </div>
+              <div class="next">
+                <i class="iconfont icon-tubiao_gengduo"></i>
+              </div>
+            </a>
           </div>
         </div>
-
-        <!--商品列表区域-->
-        <div class="product-list-wrap" ref="goodWrap">
-
-          <!--商品列表-->
-          <good-list ref="goodList" :goods="good"></good-list>
-
-          <!--分类-->
-          <div class="classify-nav">
-            <div class="nav-prev nav" @click="getTagPrev" v-show="tagIndex>0">
-              <a href="javascript:void(0);">
-                <div class="prev">
-                  <i class="iconfont icon-fanhui"></i>
-                </div>
-                <div class="mess">
-                  <p class="title">{{tags.tag1}}</p>
-                  <p class="name">{{tags.tag2[tagIndex-1]}}</p>
-                </div>
-              </a>
-            </div>
-            <div class="nav-next nav" @click="getTagNext" v-show="tagIndex<tags.tag2.length-1">
-              <a href="javascript:void(0);">
-                <div class="mess">
-                  <p class="title">{{tags.tag1}}</p>
-                  <p class="name">{{tags.tag2[tagIndex+1]}}</p>
-                </div>
-                <div class="next">
-                  <i class="iconfont icon-combinedshapefuben"></i>
-                </div>
-              </a>
-            </div>
-          </div>
-          <!--介绍-->
-          <!--<div class="intro-wrap">-->
-            <!--<div class="intro">-->
-              <!--<div class="intro-main">-->
-                <!--<h1 class="intro-title">{{tags.tag1}} - {{tags.tag2[getTagIndex]}}</h1>-->
-                <!--<p class="intro-con">折扣 - 女士荷叶边、天鹅绒布、不对称、条纹、高腰、格子、铅笔裙、OL半身裙、皮短裙、牛仔长裙、碎花长裙、百褶短裙、半身裙、牛仔A字裙或黑色百褶裙。</p>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        </div>
-      </section>
-      <transition name="scrollY">
-        <div class="goUp" @click="goUp" v-show="scrollTop>=500">
-          <i class="iconfont icon-arrow-up"></i>
-        </div>
-      </transition>
-      <filtrate ref="filtrate"></filtrate>
-      <my-foot></my-foot>
-    </div>
+        <!--介绍-->
+        <!--<div class="intro-wrap">-->
+        <!--<div class="intro">-->
+        <!--<div class="intro-main">-->
+        <!--<h1 class="intro-title">{{tags.tag1}} - {{tags.tag2[getTagIndex]}}</h1>-->
+        <!--<p class="intro-con">折扣 - 女士荷叶边、天鹅绒布、不对称、条纹、高腰、格子、铅笔裙、OL半身裙、皮短裙、牛仔长裙、碎花长裙、百褶短裙、半身裙、牛仔A字裙或黑色百褶裙。</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+      </div>
+    </section>
+    <transition name="scrollY">
+      <div class="goUp" @click="goUp" v-show="scrollTop>=500">
+        <i class="iconfont icon-arrow-up"></i>
+      </div>
+    </transition>
+    <filtrate ref="filtrate"></filtrate>
+    <my-foot></my-foot>
+  </div>
 </template>
 
 <script>
@@ -69,77 +69,86 @@
   import MyFoot from "../components/MyFoot/MyFoot";
   import GoodList from "../components/Goods/GoodList";
   import Filtrate from "../components/Goods/Filtrate";
+  
   export default {
     ame: "Good",
     data() {
-      return{
+      return {
         //商品列表
-        good:this.$store.state.goodsList,
+        good: [],
         //当前标签所在标签的集合
-        tags:{},
+        tags: {},
         //当前的标签
-        tag:[],
+        tag: [],
         //当前标签的下标
-        tagIndex:0,
+        tagIndex: 0,
         //点击标签
-        tagArr:[],
+        tagArr: [],
         //过滤器文本显示
-        showFilter:false,
+        showFilter: false,
         //滚动距离
-        scrollTop:0,
+        scrollTop: 0,
       }
     },
-
-    components:{
+    
+    components: {
       MyHead,
       MyFoot,
       GoodList,
       Filtrate,
     },
-
-    created () {
-      this.tags = this.$store.state.tagList;
-      this.tag = this.$store.state.tag;
+    
+    created() {
+      this.tags = JSON.parse(localStorage.getItem('tagList'));
+      this.tag = JSON.parse(localStorage.getItem('tag'));
+      console.log(this.tags);
+      console.log(this.tag);
+      this.$axios.get("/api/goods/tag", {params: {tag: this.tag}}).then(({data}) => {
+        console.log(data);
+        if (data.status == 1) {
+          this.good = data.data;
+        }
+      })
       this.getTagIndex();
       console.log(this.tagIndex)
-      console.log(this.tags.tag2.length);
     },
-
-    methods:{
+    
+    methods: {
       //过滤器的显示
-      Filtrate () {
+      Filtrate() {
         this.$refs.filtrate.show();
       },
-
+      
       //滚动
-      Scroll () {
-         this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      Scroll() {
+        this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
       },
-
+      
       //返回顶部
-      goUp () {
+      goUp() {
         var timer = setInterval(() => {
           var top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
           var speed = Math.floor(-top / 6);
           document.documentElement.scrollTop = document.body.scrollTop = top + speed;
-          if(top == 0) {
+          if (top == 0) {
             clearInterval(timer);
           }
-        },20)
+        }, 20)
       },
       //遍历当前标签所处标签集合，获得当前标签的下标
-      getTagIndex () {
-        this.tags.tag2.forEach((item,index) => {
-          if(this.tag[1] == item) {
+      getTagIndex() {
+        this.tags.tag2.forEach((item, index) => {
+          if (this.tag[1] == item) {
             this.tagIndex = index;
+            console.log(index);
             // return index;
           }
         })
       },
       changeTag(Arr) {
-        this.$axios.get("/api/goods/tag",{params:{tag:Arr}})
+        this.$axios.get("/api/goods/tag", {params: {tag: Arr}})
           .then(({data}) => {
-            if (data.status==1) {
+            if (data.status == 1) {
               console.log(data);
               this.good = data.data;
             } else {
@@ -166,7 +175,7 @@
     },
     //此阶段可获取真实节点
     mounted() {
-      window.addEventListener('scroll',this.Scroll);
+      window.addEventListener('scroll', this.Scroll);
     }
   }
 </script>
@@ -176,6 +185,7 @@
     text-decoration: none;
     color: #505252;
   }
+  
   .category-page {
     width: 100%;
     margin-top: 104px;
@@ -188,7 +198,7 @@
       font-size: 22px;
       overflow: hidden;
       z-index: 200;
-
+      
       /*筛选*/
       .filtrate {
         text-align: right;
@@ -200,7 +210,7 @@
         }
       }
     }
-
+    
     /*商品列表区域*/
     .product-list-wrap {
       width: 100%;
@@ -223,7 +233,7 @@
             div {
               display: inline-block;
             }
-            .prev,.next {
+            .prev, .next {
               width: 46px;
               height: 52px;
               text-align: center;
@@ -231,7 +241,8 @@
               vertical-align: middle;
             }
             .mess {
-              padding: 0 20px;
+              width: 70%;
+              margin: 0 20px;
               vertical-align: middle;
               p {
                 text-overflow: ellipsis;
@@ -243,15 +254,18 @@
           }
         }
         .nav-prev {
-
           border-right: 4px solid #fff;
-
+          .iconfont {
+            font-size: 36px;
+          }
         }
         .nav-next {
           float: right;
-
           border-left: 4px solid #fff;
           text-align: right;
+          .iconfont {
+            font-size: 40px;
+          }
         }
       }
       /*介绍*/
@@ -278,16 +292,20 @@
       }
     }
   }
+  
   /*返回顶部按钮*/
-  .scrollY-enter,.scrollY-leave-to {
+  .scrollY-enter, .scrollY-leave-to {
     transform: translateY(52px);
   }
-  .scrollY-enter-active,.scrollY-leave-active {
+  
+  .scrollY-enter-active, .scrollY-leave-active {
     transition: transform .5s;
   }
-  .scrollY-enter-to,.scrollY-leave {
+  
+  .scrollY-enter-to, .scrollY-leave {
     transform: translateY(0);
   }
+  
   .goUp {
     position: fixed;
     width: 96px;
@@ -295,9 +313,9 @@
     right: 0;
     bottom: 0;
     text-align: center;
-    background: rgba(220,220,220,0.5);
+    background: rgba(220, 220, 220, 0.5);
     i {
-      font-size: 22px;
+      font-size: 36px;
       line-height: 52px;
     }
   }

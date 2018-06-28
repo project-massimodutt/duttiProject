@@ -77,24 +77,14 @@
         this.borderLine.style.borderBottom = 'none';
         this.tagArr[0] = item.tag1;
         //当前标签集合
-        this.$store.commit('getTag',item);
+        localStorage.setItem('tagList',JSON.stringify(item));
       },
       skipLists(item) {
         this.tagArr[1] = item;
-        this.$axios.get("/api/goods/tag",{params:{tag:this.tagArr}})
-          .then(({data}) => {
-            if(data.status == 1 ){
-              if(data.data.length==0) {
-                return;
-              } else {
-                this.$store.commit('getGoodList', data.data);
-                this.$store.commit('tag',this.tagArr);
-                this.$router.push({
-                  name:'Good',
-                })
-              }
-            }
-          })
+        localStorage.setItem('tag', JSON.stringify(this.tagArr));
+        this.$router.push({
+          name: 'Good',
+        })
       }
     },
   }

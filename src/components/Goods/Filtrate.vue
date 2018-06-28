@@ -5,7 +5,7 @@
         <!--筛选器标题-->
         <div class="title">
           <h2>筛选器</h2>
-          <i class="iconfont icon-chuyidong" @click="showFilter=!showFilter"></i>
+          <i class="iconfont icon-guanbi" @click="showFilter=!showFilter"></i>
         </div>
         <!--主体-->
         <div class="content">

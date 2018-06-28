@@ -11,19 +11,19 @@
       <div v-if="isShow1 == false" class="myAddress-row">
         <div class="row-xing">
           <input type="text" placeholder="姓氏" v-model="firName">
-          <i v-if="isfirName == true" class="iconfont icon-chuyidong"></i>
+          <i v-if="isfirName == true" class="iconfont icon-guanbi"></i>
           <i v-if="isfirName == false" class="iconfont icon-htmal5icon22"></i>
           <p v-if="isfirName == true">必须填写</p>
         </div>
         <div class="row-ming">
           <input type="text" placeholder="名" v-model="secName">
-          <i v-if="isSecName == true" class="iconfont icon-chuyidong"></i>
+          <i v-if="isSecName == true" class="iconfont icon-guanbi"></i>
           <i v-if="isSecName == false" class="iconfont icon-htmal5icon22"></i>
           <p v-if="isSecName == true">必须填写</p>
         </div>
         <div class="row-birthday">
           <input type="text" placeholder="出生日期(yyyy-mm-dd)" v-model="birthday	">
-          <i v-if="isBirthday == true" class="iconfont icon-chuyidong"></i>
+          <i v-if="isBirthday == true" class="iconfont icon-guanbi"></i>
           <i v-if="isBirthday == false" class="iconfont icon-htmal5icon22"></i>
           <p v-if="isBirthday == true">必须填写</p>
         </div>
@@ -49,7 +49,7 @@
           <div class="row-phone">
             <span>+86</span>
             <input type="text" placeholder="手机号码" v-model="phone">
-            <i v-if="isPhone == true" class="iconfont icon-chuyidong"></i>
+            <i v-if="isPhone == true" class="iconfont icon-guanbi"></i>
             <i v-if="isPhone == false" class="iconfont icon-htmal5icon22"></i>
           </div>
           <div class="row-mid-txt">
@@ -58,20 +58,20 @@
         </div>
         <div class="row-site">
           <input type="text" placeholder="地址" v-model="address">
-          <i v-if="isAddress == true" class="iconfont icon-chuyidong"></i>
+          <i v-if="isAddress == true" class="iconfont icon-guanbi"></i>
           <i v-if="isAddress == false" class="iconfont icon-htmal5icon22"></i>
           <p v-if="isAddress == true">必须填写</p>
         </div>
         <div class="row-else">
           <input type="text" placeholder="其他信息" v-model="other">
-          <i v-if="isOther == true" class="iconfont icon-chuyidong"></i>
+          <i v-if="isOther == true" class="iconfont icon-guanbi"></i>
           <i v-if="isOther == false" class="iconfont icon-htmal5icon22"></i>
           <p v-if="isOther == true">必须填写</p>
         </div>
         <div class="row-min-bot">
           <div class="row-postcode">
             <input type="text" placeholder="邮政 编码" v-model="postCode">
-            <i v-if="isPostCode == true" class="iconfont icon-chuyidong"></i>
+            <i v-if="isPostCode == true" class="iconfont icon-guanbi"></i>
             <i v-if="isPostCode == false" class="iconfont icon-htmal5icon22"></i>
             <p v-if="isOther == true">必须填写</p>
           </div>
@@ -91,20 +91,20 @@
           <div v-if="isCard" class="firm-con">
             <div class="card">
               <input type="text" placeholder="身份证" v-model="idCard">
-              <i v-if="isCardc == true" class="iconfont icon-chuyidong"></i>
+              <i v-if="isCardc == true" class="iconfont icon-guanbi"></i>
               <i v-if="isCardc == false" class="iconfont icon-htmal5icon22"></i>
               <span v-if="isCardc == true">必须填写</span>
             </div>
             <div class="firm-name">
               <input type="text" placeholder="企业名称" v-model="comName">
-              <i v-if="isfirmName == true" class="iconfont icon-chuyidong"></i>
+              <i v-if="isfirmName == true" class="iconfont icon-guanbi"></i>
               <i v-if="isfirmName == false" class="iconfont icon-htmal5icon22"></i>
               <span v-if="isfirmName">必须填写</span>
             </div>
           </div>
         </div>
         <div class="row-btn">
-          <button @click="add">添加</button>
+          <button @click="add">保存修改</button>
         </div>
       </div>
     </div>
@@ -684,8 +684,6 @@
       display: block !important;
     }
     .col:nth-child(1) {
-      top: 888px;
-      right: 60px;
       border-bottom: 1px solid black;
       select {
         margin: 0;
@@ -698,6 +696,9 @@
         font-style: italic;
         color: #555555;
         font-weight: 700;
+        option {
+          font-size: 26px;
+        }
       }
     }
     .col:nth-child(2) {
@@ -715,6 +716,9 @@
         font-style: italic;
         color: #555555;
         font-weight: 700;
+        option {
+          font-size: 26px;
+        }
       }
     }
     .col:nth-child(3) {
@@ -733,6 +737,9 @@
         font-style: italic;
         color: #555555;
         font-weight: 700;
+        option {
+          font-size: 26px;
+        }
       }
     }
   }

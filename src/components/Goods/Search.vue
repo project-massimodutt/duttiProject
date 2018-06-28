@@ -3,10 +3,10 @@
       <div class="search-filter">
         <ul class="search-result">
           <li @click="change(0)" class="search-item selected"><a href="JavaScript:void(0);"><span>全部 ({{initgood.length}})</span></a></li>
-          <li @click="change(1)" class="search-item" v-if="dutt>0"><a href="JavaScript:void(0);"><span>季末折扣 ({{dutt}})</span></a></li>
-          <li @click="change(2)" class="search-item" v-if="male>0"><a href="JavaScript:void(0);"><span>男装 ({{male}})</span></a></li>
-          <li @click="change(3)" class="search-item" v-if="female>0"><a href="JavaScript:void(0);"><span>女装 ({{female}})</span></a></li>
-          <li @click="change(4)" class="search-item" v-if="children>0"><a href="JavaScript:void(0);"><span>男女童装 ({{children}})</span></a></li>
+          <li @click="change(1)" class="search-item" v-show="dutt>0"><a href="JavaScript:void(0);"><span>季末折扣 ({{dutt}})</span></a></li>
+          <li @click="change(2)" class="search-item" v-show="male>0"><a href="JavaScript:void(0);"><span>男装 ({{male}})</span></a></li>
+          <li @click="change(3)" class="search-item" v-show="female>0"><a href="JavaScript:void(0);"><span>女装 ({{female}})</span></a></li>
+          <li @click="change(4)" class="search-item" v-show="children>0"><a href="JavaScript:void(0);"><span>男女童装 ({{children}})</span></a></li>
         </ul>
       </div>
     </div>

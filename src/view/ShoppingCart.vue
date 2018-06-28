@@ -278,6 +278,7 @@
         }
       }
       .cart-head-min {
+        padding-left: 50px;
         font-size: 28px;
         letter-spacing: 2px;
         color: inherit;

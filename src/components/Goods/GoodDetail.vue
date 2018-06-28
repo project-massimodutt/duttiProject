@@ -150,22 +150,6 @@
                       <img src="../../assets/img/compo1.png" alt="">
                       <span>{{more}}</span>
                     </div>
-                    <!--<div class="notice">-->
-                    <!--<img src="../../assets/img/compo2.png" alt="">-->
-                    <!--<span>不可漂白</span>-->
-                    <!--</div>-->
-                    <!--<div class="notice">-->
-                    <!--<img src="../../assets/img/compo3.png" alt="">-->
-                    <!--<span>100℃以下熨烫</span>-->
-                    <!--</div>-->
-                    <!--<div class="notice">-->
-                    <!--<img src="../../assets/img/compo4.png" alt="">-->
-                    <!--<span>四氯乙烯干洗</span>-->
-                    <!--</div>-->
-                    <!--<div class="notice">-->
-                    <!--<img src="../../assets/img/compo5.png" alt="">-->
-                    <!--<span>不可使用烘干机</span>-->
-                    <!--</div>-->
                   </div>
                 </li>
                 <!--确认发货信息-->
@@ -273,7 +257,6 @@
             el: '.swiper-pagination',
             clickable: true
           },
-          
           onSlideChangeEnd: swiper => {
             //这个位置放swiper的回调方法
             this.page = swiper.realIndex + 1;
@@ -315,10 +298,6 @@
         imgIndex: 0,
         //滚动距离
         scroll: 0,
-        // d: true,
-        // h:false,
-        // q:false,
-        // t:false
         showIndex: 0,
         activeDate: 0,
       }
@@ -367,12 +346,8 @@
       
       //添加购物车
       addcart() {
-        // console.log(this.currentPic);
-        // console.log(this.colorPic);
-        // console.log(this.size);
         this.$axios.post(`${this.$api}/cart/add`, {
           userid: localStorage.getItem('userid'),
-          // userid: '5b2b1781e2a1532578506fb9',
           goodsid: this.Id,
           goodName: this.good.goodName,
           showPic: this.currentPic,
@@ -390,7 +365,6 @@
             } else {
               alert(data.msg);
             }
-            // console.log(data);
           })
       },
       //改变颜色
@@ -429,6 +403,7 @@
         console.log(this.goodsId[this.IdIndex]);
         console.log(this.Id);
         this.getGoods(this.Id);
+        this.showSettle = false;
       },
       prev() {
         this.IdIndex -= 1;
@@ -437,6 +412,7 @@
         console.log(this.goodsId[this.IdIndex]);
         console.log(this.Id);
         this.getGoods(this.Id);
+        this.showSettle = false;
       },
       
       // showMess() {
@@ -594,7 +570,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      z-index: 100;
+      z-index: 600;
       overflow: hidden;
       background-color: #fff;
       .showimg {
