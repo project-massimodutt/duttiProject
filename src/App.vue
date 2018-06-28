@@ -3,7 +3,7 @@
     <keep-alive v-if="$route.name == 'GoodSearch' || $route.name == 'Good'">
       <router-view></router-view>
     </keep-alive>
-    <router-view v-if="$route.name != 'GoodSearch' || $route.name != 'Good'"></router-view>
+    <router-view v-if="$route.name != 'GoodSearch' && $route.name != 'Good'"></router-view>
   </div>
 </template>
 
